@@ -1,6 +1,6 @@
 const BASE_URL = window.location.hostname === 'localhost' 
   ? 'http://localhost:8000/api/v1' 
-  : 'https://studentperformanceanalytics-1.onrender.com/api/v1';
+  : 'https://studentperformanceanalytics.onrender.com/api/v1';
 
 export const api = {
   getStudents: async () => {
