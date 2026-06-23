@@ -35,13 +35,18 @@ export const api = {
       const res = await fetch(`${BASE_URL}/analytics/at-risk`);
       if (!res.ok) return [];
       const data = await res.json();
+      
+      // Map backend snake_case properties precisely to frontend variables
       return data.map(s => ({
-        name: s.full_name || s.name,
+        name: s.full_name || s.name,         // Maps full_name -> name
         department: s.department,
-        gpa: s.cgpa || s.gpa
+        gpa: s.cgpa || s.gpa                 // Maps cgpa -> gpa
       }));
-    } catch { return []; }
+    } catch {
+      return [];
+    }
   },
+  
   getStudentReport: async (studentId) => {
     try {
       const res = await fetch(`${BASE_URL}/reports/student/${studentId}`);
